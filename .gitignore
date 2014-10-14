@@ -1,0 +1,11 @@
+/proj.android/*/bin
+/proj.android/*/gen
+/proj.android/*/libs
+/proj.android/*/obj
+/proj.android/obj
+/proj.android/*/.settings/
+/proj.android/*/local.properties
+/proj.android/*/proguard-project.txt
+/proj.android/*/project.properties 
+/proj.android/android_build.conf
+/proj.android/workspace/.metadata/.plugins
