@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		066B389E19EDB9F400A11F1A /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 066B389419EDB9F400A11F1A /* Shader.fsh */; };
-		066B389F19EDB9F400A11F1A /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 066B389519EDB9F400A11F1A /* Shader.vsh */; };
+		066B389E19EDB9F400A11F1A /* sprite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 066B389419EDB9F400A11F1A /* sprite.fsh */; };
+		066B389F19EDB9F400A11F1A /* sprite.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 066B389519EDB9F400A11F1A /* sprite.vsh */; };
 		066B38A019EDB9F400A11F1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 066B389A19EDB9F400A11F1A /* AppDelegate.m */; };
 		066B38A119EDB9F400A11F1A /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 066B389C19EDB9F400A11F1A /* GameViewController.mm */; };
 		066B38A219EDB9F400A11F1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 066B389D19EDB9F400A11F1A /* main.m */; };
 		066B38B619EDBD1400A11F1A /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 066B38A619EDBD1400A11F1A /* Input.cpp */; };
-		066B38BB19EDBD1400A11F1A /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 066B38B119EDBD1400A11F1A /* TextureManager.cpp */; };
 		066B3B3E19EDC2CC00A11F1A /* Entity.cc in Sources */ = {isa = PBXBuildFile; fileRef = 066B3A3019EDC2CC00A11F1A /* Entity.cc */; };
 		066B3B3F19EDC2CC00A11F1A /* Event.cc in Sources */ = {isa = PBXBuildFile; fileRef = 066B3A3319EDC2CC00A11F1A /* Event.cc */; };
 		066B3B4019EDC2CC00A11F1A /* Pool.cc in Sources */ = {isa = PBXBuildFile; fileRef = 066B3A3719EDC2CC00A11F1A /* Pool.cc */; };
@@ -124,15 +123,17 @@
 		066B3BA919EDC2CC00A11F1A /* vector_angle.inl in Resources */ = {isa = PBXBuildFile; fileRef = 066B3B2819EDC2CC00A11F1A /* vector_angle.inl */; };
 		066B3BAA19EDC2CC00A11F1A /* vector_query.inl in Resources */ = {isa = PBXBuildFile; fileRef = 066B3B2A19EDC2CC00A11F1A /* vector_query.inl */; };
 		066B3BAB19EDC2CC00A11F1A /* wrap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 066B3B2C19EDC2CC00A11F1A /* wrap.inl */; };
-		066B3BB019EDC51000A11F1A /* ServiceLocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 066B3BAE19EDC51000A11F1A /* ServiceLocator.cpp */; };
 		066B3BB319EDC52100A11F1A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 066B3BB119EDC52100A11F1A /* Application.cpp */; };
+		066B3BB919EDC8E100A11F1A /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 066B3BB719EDC8E100A11F1A /* RenderSystem.cpp */; };
+		066B3BBF19EDD19C00A11F1A /* NativeBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 066B3BBE19EDD19C00A11F1A /* NativeBridge.mm */; };
+		0696E6FD19EFA9EB00778D70 /* TextureSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0696E6FB19EFA9EB00778D70 /* TextureSystem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		066B386519EDB8E900A11F1A /* OpenglGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenglGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		066B386919EDB8E900A11F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		066B389419EDB9F400A11F1A /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
-		066B389519EDB9F400A11F1A /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		066B389419EDB9F400A11F1A /* sprite.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sprite.fsh; sourceTree = "<group>"; };
+		066B389519EDB9F400A11F1A /* sprite.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sprite.vsh; sourceTree = "<group>"; };
 		066B389919EDB9F400A11F1A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		066B389A19EDB9F400A11F1A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		066B389B19EDB9F400A11F1A /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -140,8 +141,6 @@
 		066B389D19EDB9F400A11F1A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		066B38A619EDBD1400A11F1A /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
 		066B38A719EDBD1400A11F1A /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
-		066B38B119EDBD1400A11F1A /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
-		066B38B219EDBD1400A11F1A /* TextureManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureManager.hpp; sourceTree = "<group>"; };
 		066B3A2719EDC05900A11F1A /* Gl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Gl.hpp; sourceTree = "<group>"; };
 		066B3A2C19EDC2CC00A11F1A /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		066B3A2D19EDC2CC00A11F1A /* simplesignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplesignal.h; sourceTree = "<group>"; };
@@ -411,10 +410,16 @@
 		066B3B3C19EDC2CC00A11F1A /* vec4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vec4.hpp; sourceTree = "<group>"; };
 		066B3B3D19EDC2CC00A11F1A /* vector_relational.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector_relational.hpp; sourceTree = "<group>"; };
 		066B3BAC19EDC32100A11F1A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		066B3BAE19EDC51000A11F1A /* ServiceLocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceLocator.cpp; sourceTree = "<group>"; };
-		066B3BAF19EDC51000A11F1A /* ServiceLocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceLocator.hpp; sourceTree = "<group>"; };
 		066B3BB119EDC52100A11F1A /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		066B3BB219EDC52100A11F1A /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
+		066B3BB519EDC86D00A11F1A /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
+		066B3BB719EDC8E100A11F1A /* RenderSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderSystem.cpp; sourceTree = "<group>"; };
+		066B3BB819EDC8E100A11F1A /* RenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RenderSystem.hpp; sourceTree = "<group>"; };
+		066B3BBA19EDCCB500A11F1A /* TextureComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureComponent.hpp; sourceTree = "<group>"; };
+		066B3BBC19EDD14F00A11F1A /* NativeBridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NativeBridge.hpp; sourceTree = "<group>"; };
+		066B3BBE19EDD19C00A11F1A /* NativeBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeBridge.mm; sourceTree = "<group>"; };
+		0696E6FB19EFA9EB00778D70 /* TextureSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureSystem.cpp; sourceTree = "<group>"; };
+		0696E6FC19EFA9EB00778D70 /* TextureSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureSystem.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -475,8 +480,8 @@
 		066B389319EDB9F400A11F1A /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				066B389419EDB9F400A11F1A /* Shader.fsh */,
-				066B389519EDB9F400A11F1A /* Shader.vsh */,
+				066B389419EDB9F400A11F1A /* sprite.fsh */,
+				066B389519EDB9F400A11F1A /* sprite.vsh */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 		066B389819EDB9F400A11F1A /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				066B3BBE19EDD19C00A11F1A /* NativeBridge.mm */,
 				066B389919EDB9F400A11F1A /* AppDelegate.h */,
 				066B389A19EDB9F400A11F1A /* AppDelegate.m */,
 				066B389B19EDB9F400A11F1A /* GameViewController.h */,
@@ -515,11 +521,16 @@
 		066B38A319EDBD1400A11F1A /* base */ = {
 			isa = PBXGroup;
 			children = (
+				0696E6FB19EFA9EB00778D70 /* TextureSystem.cpp */,
+				0696E6FC19EFA9EB00778D70 /* TextureSystem.hpp */,
 				066B38A619EDBD1400A11F1A /* Input.cpp */,
 				066B38A719EDBD1400A11F1A /* Input.hpp */,
-				066B38B119EDBD1400A11F1A /* TextureManager.cpp */,
-				066B38B219EDBD1400A11F1A /* TextureManager.hpp */,
 				066B3A2719EDC05900A11F1A /* Gl.hpp */,
+				066B3BB519EDC86D00A11F1A /* TransformComponent.hpp */,
+				066B3BBA19EDCCB500A11F1A /* TextureComponent.hpp */,
+				066B3BB719EDC8E100A11F1A /* RenderSystem.cpp */,
+				066B3BB819EDC8E100A11F1A /* RenderSystem.hpp */,
+				066B3BBC19EDD14F00A11F1A /* NativeBridge.hpp */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -875,8 +886,6 @@
 		066B3BAD19EDC51000A11F1A /* game */ = {
 			isa = PBXGroup;
 			children = (
-				066B3BAE19EDC51000A11F1A /* ServiceLocator.cpp */,
-				066B3BAF19EDC51000A11F1A /* ServiceLocator.hpp */,
 				066B3BB119EDC52100A11F1A /* Application.cpp */,
 				066B3BB219EDC52100A11F1A /* Application.hpp */,
 			);
@@ -969,12 +978,12 @@
 				066B3B8919EDC2CC00A11F1A /* matrix_cross_product.inl in Resources */,
 				066B3B6819EDC2CC00A11F1A /* matrix_access.inl in Resources */,
 				066B3B5919EDC2CC00A11F1A /* type_mat2x3.inl in Resources */,
-				066B389E19EDB9F400A11F1A /* Shader.fsh in Resources */,
+				066B389E19EDB9F400A11F1A /* sprite.fsh in Resources */,
 				066B3B9D19EDC2CC00A11F1A /* rotate_vector.inl in Resources */,
 				066B3B8319EDC2CC00A11F1A /* inertia.inl in Resources */,
 				066B3B9B19EDC2CC00A11F1A /* raw_data.inl in Resources */,
 				066B3B6A19EDC2CC00A11F1A /* matrix_transform.inl in Resources */,
-				066B389F19EDB9F400A11F1A /* Shader.vsh in Resources */,
+				066B389F19EDB9F400A11F1A /* sprite.vsh in Resources */,
 				066B3B6719EDC2CC00A11F1A /* epsilon.inl in Resources */,
 				066B3B7D19EDC2CC00A11F1A /* extented_min_max.inl in Resources */,
 				066B3B5619EDC2CC00A11F1A /* type_half.inl in Resources */,
@@ -1058,17 +1067,18 @@
 			files = (
 				066B3B4019EDC2CC00A11F1A /* Pool.cc in Sources */,
 				066B3B4119EDC2CC00A11F1A /* Timer.cc in Sources */,
+				0696E6FD19EFA9EB00778D70 /* TextureSystem.cpp in Sources */,
 				066B38A019EDB9F400A11F1A /* AppDelegate.m in Sources */,
 				066B38A119EDB9F400A11F1A /* GameViewController.mm in Sources */,
-				066B3BB019EDC51000A11F1A /* ServiceLocator.cpp in Sources */,
+				066B3BBF19EDD19C00A11F1A /* NativeBridge.mm in Sources */,
 				066B3B3F19EDC2CC00A11F1A /* Event.cc in Sources */,
 				066B3BB319EDC52100A11F1A /* Application.cpp in Sources */,
 				066B3B4219EDC2CC00A11F1A /* System.cc in Sources */,
 				066B3B3E19EDC2CC00A11F1A /* Entity.cc in Sources */,
 				066B38A219EDB9F400A11F1A /* main.m in Sources */,
+				066B3BB919EDC8E100A11F1A /* RenderSystem.cpp in Sources */,
 				066B3B4C19EDC2CC00A11F1A /* glm.cpp in Sources */,
 				066B38B619EDBD1400A11F1A /* Input.cpp in Sources */,
-				066B38BB19EDBD1400A11F1A /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

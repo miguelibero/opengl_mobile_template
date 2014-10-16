@@ -78,6 +78,7 @@
 
 - (void)update
 {
-    _app.update();
+    double dt = 0;
+    _app.update(dt);
 }
 @end
