@@ -10,13 +10,16 @@ PLATFORM_DIR_FILTER := ! \( -path \*/platform/\* ! -regex .\*/platform/android/\
 #Recursive include all .cpp files in the SRC directory
 FILE_LIST := $(shell find $(BASE_PATH)/src -type f -iname \*.cpp $(PLATFORM_DIR_FILTER) )
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
+#Compile entityx (maybe move to library)
+FILE_LIST := $(shell find $(BASE_PATH)/lib/entityx -type f -iname \*.cc $(PLATFORM_DIR_FILTER) )
+LOCAL_SRC_FILES += $(FILE_LIST:$(LOCAL_PATH)/%=%)
 
 #Find all the headers directories inside SRC
 LOCAL_C_INCLUDES += $(shell find $(BASE_PATH)/src -type d $(PLATFORM_DIR_FILTER) )
 LOCAL_C_INCLUDES += $(BASE_PATH)/lib
 
 LOCAL_CFLAGS := -DTARGET_OS_ANDROID
-LOCAL_CPPFLAGS := -frtti -std=c++11
+LOCAL_CPPFLAGS := -frtti -std=c++11 -gstabs+
 
 DEBUG := $(strip $(NDK_DEBUG))
 ifeq ($(DEBUG),1)
@@ -29,7 +32,6 @@ endif
 
 LOCAL_WHOLE_STATIC_LIBRARIES := app
 
-LOCAL_LDLIBS := -llog
-LOCAL_EXPORT_LDLIBS := -lGLESv2 -lz
+LOCAL_LDLIBS := -llog -lGLESv2 -lz
 
 include $(BUILD_SHARED_LIBRARY)

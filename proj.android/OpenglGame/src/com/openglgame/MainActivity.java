@@ -1,9 +1,20 @@
+package com.openglgame;
 
 import android.content.Intent;
+import android.content.Context;
+import android.content.pm.ConfigurationInfo;
 import android.os.Bundle;
+import android.os.Build;
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.util.Log;
+import android.opengl.GLSurfaceView;
+import android.widget.Toast;
+import android.opengl.GLSurfaceView.Renderer;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
-public class MainActivity extends Cocos2dxActivity
+public class MainActivity extends Activity
 {
 	private GLSurfaceView glSurfaceView;
 	private boolean rendererSet;
@@ -27,7 +38,21 @@ public class MainActivity extends Cocos2dxActivity
 	        }
 	 
 	        glSurfaceView.setEGLContextClientVersion(2);
-	        glSurfaceView.setRenderer(new Renderer());
+			glSurfaceView.setRenderer(new Renderer(){
+			    @Override
+			    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+			    	MainActivity.this.onSurfaceCreated();
+			    }
+			 
+			    @Override
+			    public void onSurfaceChanged(GL10 gl, int width, int height) {
+			    	MainActivity.this.onSurfaceChanged(width, height);
+			    }
+			    @Override
+			    public void onDrawFrame(GL10 gl) {
+			    	MainActivity.this.onDrawFrame();
+			    }
+			});
 	        rendererSet = true;
 	        setContentView(glSurfaceView);
 	    } else {
