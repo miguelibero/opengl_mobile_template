@@ -18,10 +18,12 @@ public class MainActivity extends Activity
 {
 	private GLSurfaceView glSurfaceView;
 	private boolean rendererSet;
-
+	private long lastDrawTime;
 
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+
+		NativeBridge.instance.setActivity(this);
 
 		ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
     	ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
@@ -50,11 +52,15 @@ public class MainActivity extends Activity
 			    }
 			    @Override
 			    public void onDrawFrame(GL10 gl) {
-			    	MainActivity.this.onDrawFrame();
+			    	double dt = lastDrawTime;
+			    	lastDrawTime = System.currentTimeMillis();
+			    	dt = (lastDrawTime - dt) / 1000.0f;
+			    	MainActivity.this.onDrawFrame(dt);
 			    }
 			});
 	        rendererSet = true;
 	        setContentView(glSurfaceView);
+	        lastDrawTime = System.currentTimeMillis();
 	    } else {
 	        // Should never be seen in production, since the manifest filters
 	        // unsupported devices.
@@ -111,5 +117,5 @@ public class MainActivity extends Activity
 
     public static native void onSurfaceCreated();
     public static native void onSurfaceChanged(int width, int height);
-    public static native void onDrawFrame();
+    public static native void onDrawFrame(double dt);
 }

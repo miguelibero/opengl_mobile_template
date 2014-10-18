@@ -19,7 +19,7 @@ LOCAL_C_INCLUDES += $(shell find $(BASE_PATH)/src -type d $(PLATFORM_DIR_FILTER)
 LOCAL_C_INCLUDES += $(BASE_PATH)/lib
 
 LOCAL_CFLAGS := -DTARGET_OS_ANDROID
-LOCAL_CPPFLAGS := -frtti -std=c++11 -gstabs+
+LOCAL_CPPFLAGS := -fexceptions -std=c++11 -gstabs+
 
 DEBUG := $(strip $(NDK_DEBUG))
 ifeq ($(DEBUG),1)

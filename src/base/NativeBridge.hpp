@@ -4,6 +4,23 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <exception>
+
+class NativeException: public std::exception
+{
+private:
+	std::string _msg;
+public:
+	NativeException(const std::string& msg):
+	_msg(msg)
+	{
+	}
+
+	virtual const char* what() const throw()
+	{
+		return _msg.c_str();
+	}
+};
 
 class NativeBridge
 {
