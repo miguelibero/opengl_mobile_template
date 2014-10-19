@@ -38,7 +38,7 @@ void Application::unload()
 
 void Application::update(double dt)
 {
-	systems.update<ShaderSystem>(dt);
-	systems.update<TextureSystem>(dt);
+    systems.update<ShaderSystem>(dt);
+    systems.update<TextureSystem>(dt);
     systems.update<RenderSystem>(dt);
 }

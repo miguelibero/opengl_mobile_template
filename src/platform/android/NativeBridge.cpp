@@ -2,6 +2,7 @@
 #include "base/NativeBridge.hpp"
 #include "platform/android/JniObject.hpp"
 #include "base/Log.hpp"
+#include "base/Exception.hpp"
 
 JniObject getJniObject()
 {
@@ -9,23 +10,28 @@ JniObject getJniObject()
 	return obj;
 }
 
-NativeBridge::DataPtr NativeBridge::readAsset(const std::string& name)
+NativeBridge::DataPtr NativeBridge::readFile(const std::string& name)
 {
-	auto data = new Data(getJniObject().call("readAsset", Data(), name));
-	if(getJniObject().hasError())
+	try
 	{
-		throw NativeException(std::string("Error reading asset '")+name+"'.");
+		auto data = new Data(getJniObject().call("readFile", Data(), name));
+		return DataPtr(data);
 	}
-    return DataPtr(data);
+	catch(JniException e)
+	{
+		throw Exception(std::string("Error reading asset '")+name+"': "+e.what());
+	}
 }
 
 NativeBridge::DataPtr NativeBridge::readImage(const std::string& name)
 {
-	auto data = new Data(getJniObject().call("readImage", Data(), name));
-	if(getJniObject().hasError())
+	try
 	{
-		throw NativeException(std::string("Error reading image '")+name+"'.");
+		auto data = new Data(getJniObject().call("readImage", Data(), name));
+		return DataPtr(data);
 	}
-	LogDebug("Loaded image '%s' of size %zu", name.c_str(), data->size());
-    return DataPtr(data);
+	catch(JniException e)
+	{
+		throw Exception(std::string("Error reading image '")+name+"': "+e.what());
+	}
 }
