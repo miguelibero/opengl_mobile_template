@@ -147,23 +147,6 @@ void JniObject::init(jobject objId, jclass classId, const std::string& classPath
             _instance = env->NewGlobalRef(objId);
         }
     }
-    if(_classPath.empty() && _instance && _class)
-    {
-        _classPath = JniObject("java/lang/Class", _class).call("getName", std::string());
-    }
-    if(!_class)
-    {
-        std::string err("Could not find class");
-        if(_classPath.empty())
-        {
-            err += ".";
-        }
-        else
-        {
-             err += " '"+_classPath+"'.";
-        }
-        throw JniException(err);
-    }
 }
  
 JniObject::~JniObject()
@@ -186,7 +169,8 @@ void JniObject::checkJniException()
     if(exc)
     {
         env->ExceptionClear();
-        std::string msg = exc.call("getMessage()", msg);
+        std::string msg = exc.getClassPath()+": ";
+        msg += exc.call("getLocalizedMessage", msg);
         throw JniException(msg);
     }
 
@@ -218,6 +202,16 @@ std::string JniObject::getSignature() const
  
 const std::string& JniObject::getClassPath() const
 {
+    if(_classPath.empty() && _class)
+    {
+        try
+        {
+            _classPath = JniObject("java/lang/Class", _class).call("getName", _classPath);
+        }
+        catch(JniException e)
+        {
+        }
+    }
     return _classPath;
 }
  
@@ -262,17 +256,21 @@ bool JniObject::isInstanceOf(const std::string& classPath) const
 JniObject JniObject::findSingleton(const std::string& classPath)
 {
     JniObject cls(classPath);
- 
-    JniObject obj = cls.staticField("instance", cls);
-    if(!obj)
+    try
     {
-        obj = cls.staticCall("getInstance", cls);
+        return cls.staticField("instance", cls);
     }
-    if(!obj)
+    catch(JniException e)
     {
-        throw new JniException("Could not find singleton instance.");
     }
-    return obj;
+    try
+    {
+        return cls.staticCall("getInstance", cls);
+    }
+    catch(JniException e)
+    {
+    }    
+    throw JniException("Could not find singleton instance.");
 }
  
 JniObject::operator bool() const

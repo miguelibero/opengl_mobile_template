@@ -78,7 +78,7 @@ private:
  
     jclass _class;
     jobject _instance;
-    std::string _classPath;
+    mutable std::string _classPath;
 
     static void checkJniException();
  

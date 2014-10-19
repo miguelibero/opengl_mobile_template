@@ -1,4 +1,5 @@
 Icon
+.fuse*
 .DS_Store
 .com.apple.timemachine.supported
 *.sw?
@@ -22,3 +23,4 @@ xcuserdata/
 /proj.android/*/proguard-project.txt
 /proj.android/*/project.properties 
 /proj.android/android_build.conf
+/proj.android/OpenglGame/assets

@@ -39,6 +39,7 @@ defaultOptions = {
 	"emulator": "emulator",
 	"avdpath": "~/.android/avd",
 	"config": "android_build.conf",
+	"assetspath": "../assets"
 }
 
 (options, args) = parser.parse_args()
@@ -149,6 +150,12 @@ def call(args):
 	if result is not 0:
 		raise Exception("Error %d running %s" % (result, args))
 
+def prepare():
+	src = options["assetspath"]
+	dst = options["path"]+"/assets"
+	shutil.rmtree(dst)
+	shutil.copytree(src, dst)
+
 def update():
 	call(["android", "update", "project", "--path", options["path"], "--subprojects", "--target", options["target"]])
 	for libPath in libraries.values():
@@ -168,6 +175,7 @@ def clean():
 		call(["rm", "-rf", libPath+"/obj/local/*"])
 
 def build(mode):
+	prepare()
 	update()
 	ndk = ["ndk-build", "--directory", options["path"], "APP_ABI="+options["arch"]]
 	antCmd = None

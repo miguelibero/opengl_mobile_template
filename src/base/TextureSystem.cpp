@@ -16,7 +16,7 @@ GLuint TextureSystem::getTexture(const std::string &name)
     {
         return itr->second;
     }
-    auto data = _bridge.readImage(name);
+    auto data = _bridge.readImage(std::string("textures/")+name);
     GLchar* ptr = (GLchar*)data->data();
     if(ptr == nullptr)
     {
@@ -45,6 +45,7 @@ void TextureSystem::update(entityx::EntityManager& es, entityx::EventManager& ev
             }
             catch(Exception e)
             {
+                LogDebug("TextureSystem: %s", e.what());
                 texture->texture = -1;
             }
         }

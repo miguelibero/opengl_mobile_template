@@ -25,7 +25,7 @@ GLuint ShaderSystem::getShader(const std::string &name, GLenum type)
     {
         return itr->second;
     }
-    auto data = _bridge.readFile(typeName);
+    auto data = _bridge.readFile(std::string("shaders/")+typeName);
     const GLchar* ptr = (const GLchar*) data->data();
     if(ptr == nullptr)
     {
@@ -72,6 +72,7 @@ void ShaderSystem::update(entityx::EntityManager& es, entityx::EventManager& eve
             }
             catch(Exception e)
             {
+                LogDebug("ShaderSystem: %s", e.what());
                 shader->program = -1;
             }
         }
