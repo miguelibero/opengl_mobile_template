@@ -1,9 +1,15 @@
 
-attribute vec4 position;
-uniform mat4 modelViewProjectionMatrix;
-uniform sampler2D texture;
+uniform mat4 projView;
 
-void main()
-{
-    gl_Position = modelViewProjectionMatrix * position;
+attribute vec2 position;
+attribute vec2 texCoord;
+attribute vec4 color;
+
+varying vec4 vColor;
+varying vec2 vTexCoord;
+
+void main() {
+    vColor = color;
+    vTexCoord = texCoord;
+    gl_Position = projView * vec4(position, 0.0, 1.0);
 }

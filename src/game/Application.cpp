@@ -8,27 +8,32 @@
 
 #include "game/Application.hpp"
 #include "base/RenderSystem.hpp"
-#include "base/TextureSystem.hpp"
-#include "base/ShaderSystem.hpp"
-#include "base/TransformComponent.hpp"
-#include "base/TextureComponent.hpp"
-#include "base/ShaderComponent.hpp"
 #include "base/Log.hpp"
+#include "base/ProgramDefinition.hpp"
+#include "base/MaterialDefinition.hpp"
+#include "base/MaterialComponent.hpp"
+#include "base/MeshComponent.hpp"
 
 Application::Application()
 {
-    systems.add<RenderSystem>();
-    systems.add<TextureSystem>(_bridge);
-    systems.add<ShaderSystem>(_bridge);
+    systems.add<RenderSystem>(_bridge);
     systems.configure();
+
+    systems.system<RenderSystem>()->defineProgram("sprite",
+        ProgramDefinition("shaders/sprite.vsh", "shaders/sprite.fsh")
+        .withUniforms({"projView"})
+        .withAttributes({"position", "texCoord", "color"}));
+
+    systems.system<RenderSystem>()->defineMaterial("sprite",
+        MaterialDefinition("sprite")
+        .withTextures({"textures/checkers.jpg"}));
 }
 
 void Application::load()
 {
     auto sprite = entities.create();
-    sprite.assign<TextureComponent>("checkers.jpg");
-    sprite.assign<ShaderComponent>("sprite");
-    sprite.assign<TransformComponent>();
+    sprite.assign<MaterialComponent>("sprite");
+    sprite.assign<MeshComponent>();
 }
 
 void Application::unload()
@@ -38,7 +43,5 @@ void Application::unload()
 
 void Application::update(double dt)
 {
-    systems.update<ShaderSystem>(dt);
-    systems.update<TextureSystem>(dt);
     systems.update<RenderSystem>(dt);
 }

@@ -7,14 +7,14 @@
 
 struct TransformComponent : public entityx::Component<TransformComponent>
 {
-    glm::vec2 position;
-    glm::vec2 rotation;
-    glm::vec2 scale;
-    glm::mat3 transform;
+    glm::vec3 position;
+    glm::vec3 rotation;
+    glm::vec3 scale;
+    glm::mat4 transform;
     
-    TransformComponent(const glm::vec2& position=glm::vec2(0.0f, 0.0f),
-                       const glm::vec2& rotation=glm::vec2(0.0f, 0.0f),
-                       const glm::vec2& scale=glm::vec2(1.0f, 1.0f)):
+    TransformComponent(const glm::vec3& position=glm::vec3(0.0f, 0.0f, 0.0f),
+                       const glm::vec3& rotation=glm::vec3(0.0f, 0.0f, 0.0f),
+                       const glm::vec3& scale=glm::vec3(1.0f, 1.0f, 1.0f)):
     position(position), rotation(rotation), scale(scale)
     {
     }
